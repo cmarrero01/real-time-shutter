@@ -1,0 +1,29 @@
+{
+  "name": "real-time-shutter",
+  "version": "0.0.1",
+  "description": "Real time Shutter game that you can play with your friends and with the AI engine of CPU",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmarrero01/real-time-shutter.git"
+  },
+  "keywords": [
+    "game",
+    "realtime",
+    "shutter"
+  ],
+  "author": "Claudio A. Marrero",
+  "license": "GNU V2",
+  "bugs": {
+    "url": "https://github.com/cmarrero01/real-time-shutter/issues"
+  },
+  "homepage": "https://github.com/cmarrero01/real-time-shutter",
+  "dependencies":{
+    "socket.io":"latest",
+    "express":"latest",
+    "mongoose":"latest"
+  }
+}
