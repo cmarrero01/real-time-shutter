@@ -1,16 +1,36 @@
+/**
+ * Main Class for player functionalities
+ * @param params
+ * @returns {}
+ */
 module.exports = function(params){
 
+	/**
+	 * Player object
+	 */
 	var Player = (function(){
 
-		function register(){
+		/**
+		 * Register functionality
+		 * @param args
+		 */
+		function register(args){
 
 		}
 
-		function login(){
+		/**
+		 * Login
+		 * @param args
+		 */
+		function login(args){
 
 		}
 
-		function guest(){
+		/**
+		 * Access Guest
+		 * @param args
+		 */
+		function guest(args){
 
 		}
 
