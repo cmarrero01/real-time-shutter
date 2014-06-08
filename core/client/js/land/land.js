@@ -10,13 +10,16 @@ Shutter.Land = (function(){
 	 */
 	var _endpoints = Shutter.Config.endpoints;
 
+	function init(){
+		Shutter.Socket.on('player:register',onSignUp);
+	}
+
 	/**
 	 * Register
 	 * @param e
 	 */
 	function signUp(e){
 		var $this = $(this);
-		console.log($this,$this.serializeArray());
 		var data = $this.serialize();
 		Shutter.Socket.emit('player:register',data);
 		return false;
@@ -27,7 +30,7 @@ Shutter.Land = (function(){
 	 * @param result
 	 */
 	function onSignUp(result){
-
+		console.log(result);
 	}
 
 	/**

@@ -43,7 +43,6 @@ module.exports = function(params){
 	 * Income connections
 	 */
 	params.io.on('connection', function (socket) {
-		params.socket = socket;
-		params.events.on(params);
+		params.events.on(socket);
 	});
 };

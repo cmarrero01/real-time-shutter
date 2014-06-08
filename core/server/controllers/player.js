@@ -11,26 +11,30 @@ module.exports = function(params){
 	var Player = (function(){
 
 		/**
-		 * Register functionality
+		 * Register
 		 * @param args
+		 * @param socket
 		 */
-		function register(args){
-
+		function register(args,socket){
+			socket.emit('player:register',{hola:'test'});
+			console.log(args);
 		}
 
 		/**
 		 * Login
 		 * @param args
+		 * @param socket
 		 */
-		function login(args){
+		function login(args,socket){
 
 		}
 
 		/**
-		 * Access Guest
+		 * Guest
 		 * @param args
+		 * @param socket
 		 */
-		function guest(args){
+		function guest(args,socket){
 
 		}
 

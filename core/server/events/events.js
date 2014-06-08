@@ -13,10 +13,16 @@ module.exports = function(params){
 		/**
 		 * Listen all verbs incoming of client side
 		 */
-		function on(){
-			params.socket.on('player:register',params.ctrl.player.register);
-			params.socket.on('player:login',params.ctrl.player.login);
-			params.socket.on('player:guest',params.ctrl.player.guest);
+		function on(socket){
+			socket.on('player:register',function(args){
+				params.ctrl.player.register(args,socket);
+			});
+			socket.on('player:login',function(args){
+				params.ctrl.player.login(args,socket);
+			});
+			socket.on('player:guest',function(args){
+				params.ctrl.player.guest(args,socket);
+			});
 		}
 
 		return {
