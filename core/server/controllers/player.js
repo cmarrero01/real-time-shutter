@@ -16,8 +16,7 @@ module.exports = function(params){
 		 * @param socket
 		 */
 		function register(args,socket){
-			socket.emit('player:register',{hola:'test'});
-			console.log(args);
+			socket.emit('player:register',args);
 		}
 
 		/**
@@ -26,7 +25,7 @@ module.exports = function(params){
 		 * @param socket
 		 */
 		function login(args,socket){
-
+			socket.emit('player:login',args);
 		}
 
 		/**
@@ -35,7 +34,7 @@ module.exports = function(params){
 		 * @param socket
 		 */
 		function guest(args,socket){
-
+			socket.emit('player:guest',args);
 		}
 
 		return {
