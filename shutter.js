@@ -1,3 +1,5 @@
+//TODO: Clustering, routes, socket connections
+
 /**
  * Load module http
  * @property http
@@ -11,6 +13,12 @@ var http = require('http');
  * @type {*}
  */
 var express = require('express');
+
+/**
+ * Instance of socket.io
+ * @type {exports}
+ */
+var io = require('socket.io');
 
 /**
  * Instance of express create server
@@ -34,3 +42,8 @@ var server = http.createServer(app);
  * Listen the port that the game is launched.
  */
 server.listen(process.env.PORT || 80);
+
+/**
+ * Socket Listen
+ */
+io.listen(server);

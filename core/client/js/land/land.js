@@ -4,11 +4,28 @@
 Shutter.Land = (function(){
 
 	/**
+	 * Endpoints
+	 * @type {Shutter.Config.endpoints|*}
+	 * @private
+	 */
+	var _endpoints = Shutter.Config.endpoints;
+
+	/**
 	 * Register
 	 * @param e
 	 */
 	function signUp(e){
 		var $this = $(this);
+		var data = $this.serialize();
+		$.post(_endpoints.register.url,data,onSignUp);
+	}
+
+	/**
+	 * Callback when user try to sign up
+	 * @param result
+	 */
+	function onSignUp(result){
+
 	}
 
 	/**
@@ -17,6 +34,16 @@ Shutter.Land = (function(){
 	 */
 	function signIn(e){
 		var $this = $(this);
+		var data = $this.serialize();
+		$.post(_endpoints.login.url,data,onSignIn);
+	}
+
+	/**
+	 * Callback when user try to sigIn
+	 * @param result
+	 */
+	function onSignIn(result){
+
 	}
 
 	/**
@@ -25,6 +52,16 @@ Shutter.Land = (function(){
 	 */
 	function guest(e){
 		var $this = $(this);
+		var data = $this.serialize();
+		$.post(_endpoints.guest.url,data,onGuest);
+	}
+
+	/**
+	 * Callback when user try to access what guest
+	 * @param result
+	 */
+	function onGuest(result){
+
 	}
 
 	return {
