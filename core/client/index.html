@@ -15,11 +15,13 @@
 <body>
 
     <script type="text/javascript" src="libs/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/mustache/mustache.js"></script>
     <script type="text/javascript" src="libs/bootstrap.min.js"></script>
     <script type="text/javascript" src="libs/pixi.dev.js"></script>
     <script type="text/javascript" src="libs/matter-0.8.0.min.js"></script>
 
     <script type="text/javascript" src="js/shutter.js"></script>
+    <script type="text/javascript" src="js/config/config.js"></script>
 
     <script type="text/javascript" src="js/stages/stage.js"></script>
     <script type="text/javascript" src="js/stages/default.js"></script>
@@ -35,20 +37,30 @@
 
     <script type="text/javascript" src="js/engine/cpu.js"></script>
 
-    <script type="text/javascript" src="js/land/sign_up.js"></script>
-    <script type="text/javascript" src="js/land/sign_in.js"></script>
+    <script type="text/javascript" src="js/land/land.js"></script>
     <script type="text/javascript" src="js/land/credits.js"></script>
     <script type="text/javascript" src="js/land/donate.js"></script>
     <script type="text/javascript" src="js/land/facebook.js"></script>
     <script type="text/javascript" src="js/land/friends.js"></script>
-    <script type="text/javascript" src="js/land/guest.js"></script>
     <script type="text/javascript" src="js/land/loby.js"></script>
     <script type="text/javascript" src="js/land/match.js"></script>
     <script type="text/javascript" src="js/land/profile.js"></script>
     <script type="text/javascript" src="js/land/tutorial.js"></script>
 
+    <script type="text/javascript" src="js/screens/tpl.js"></script>
+    <script type="text/javascript" src="js/screens/screen.js"></script>
+    <script type="text/javascript" src="js/screens/dialogs_screen.js"></script>
+    <script type="text/javascript" src="js/screens/game_screen.js"></script>
+    <script type="text/javascript" src="js/screens/land_screen.js"></script>
+    <script type="text/javascript" src="js/screens/menues_screen.js"></script>
+    <script type="text/javascript" src="js/screens/miscellaneous_screen.js"></script>
+    <script type="text/javascript" src="js/screens/player_screen.js"></script>
+
     <script>
         $(document).ready(function(){
+            //Set flag if the user is logIn
+            Shutter.setLogIn(true);
+            //Initialize game
             Shutter.init();
         });
     </script>

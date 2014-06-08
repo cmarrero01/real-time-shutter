@@ -1,8 +1,12 @@
-<div id="RegisterModal">
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <form role="form">
+<div id="RegisterModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="RegisterModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Register</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="registerForm">
                     <div class="form-group">
                         <label for="aliasRgInput">Alias</label>
                         <input type="text" class="form-control" id="aliasRgInput" placeholder="Enter an alias">
@@ -22,11 +26,15 @@
     </div>
 </div>
 
-<div id="LoginModal">
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <form role="form">
+<div id="LoginModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="loginForm">
                     <div class="form-group">
                         <label for="aliasLgInput">Alias</label>
                         <input type="text" class="form-control" id="aliasLgInput" placeholder="Enter an alias">
@@ -46,11 +54,15 @@
     </div>
 </div>
 
-<div id="GuestModal">
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <form role="form">
+<div id="GuestModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Guest</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="guestForm">
                     <div class="form-group">
                         <label for="aliasGInput">Alias</label>
                         <input type="text" class="form-control" id="aliasGInput" placeholder="Enter an alias">
@@ -62,10 +74,14 @@
     </div>
 </div>
 
-<div id="DonateModal">
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
+<div id="DonateModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Donate</h4>
+            </div>
+            <div class="modal-body">
                 <h4>Donate to this Address to help to improve this game</h4>
                 <p>1Akvr28XX4iu7DyzYUopEATsXZ26mmjH9k</p>
             </div>
@@ -73,10 +89,14 @@
     </div>
 </div>
 
-<div id="WinModal">
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
+<div id="WinModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Win</h4>
+            </div>
+            <div class="modal-body">
                 <p>You win - Score: {{score}}</p>
                 <button id="LeaveHomeBtn" type="button" class="btn btn-default">Home</button>
             </div>
@@ -84,10 +104,14 @@
     </div>
 </div>
 
-<div id="LooseModal">
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
+<div id="LooseModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Loose</h4>
+            </div>
+            <div class="modal-body">
                 <p>You loose</p>
                 <button id="LeaveBtn" type="button" class="btn btn-default">Leave</button>
                 <button id="RevengeBtn" type="button" class="btn btn-default">Revenge</button>
