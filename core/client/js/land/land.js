@@ -16,8 +16,10 @@ Shutter.Land = (function(){
 	 */
 	function signUp(e){
 		var $this = $(this);
+		console.log($this,$this.serializeArray());
 		var data = $this.serialize();
-		$.post(_endpoints.register.url,data,onSignUp);
+		Shutter.Socket.emit('player:register',data);
+		return false;
 	}
 
 	/**

@@ -40,13 +40,9 @@ server.listen(process.env.PORT || 80);
 /**
  * Income connection
  */
-io.on('connection', function (socket) {
+var params = {
+	io:io,
+	app:app
+};
 
-	var params = {
-		io:io,
-		app:app,
-		socket:socket
-	};
-
-	require('./server/server.js')(params);
-});
+require('./core/server/server.js')(params);

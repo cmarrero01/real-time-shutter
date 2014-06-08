@@ -1,7 +1,7 @@
 Shutter.Socket = (function(){
 
 	function emit(verb,data){
-		socket.emit(verv,data);
+		socket.emit(verb,{params:data});
 	}
 
 	function on(verb,cb){
