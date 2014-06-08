@@ -1,49 +1,52 @@
-//TODO: Clustering, routes, socket connections
-
+//TODO: Remember clustering here
 /**
- * Load module http
- * @property http
- * @type {*}
+ * Server for Shutter real time game
+ * Every start here
+ * @module Server
+ * @author Claudio Marrero
+ * @copyright 2014 Claudio A. Marrero
  */
-var http = require('http');
 
+'use strict';
 /**
- * load module express
- * @property express
+ * Express
  * @type {*}
  */
 var express = require('express');
-
-/**
- * Instance of socket.io
- * @type {exports}
- */
-var io = require('socket.io');
-
-/**
- * Instance of express create server
- * @property app
- * @type {*}
- */
 var app = express();
 
 /**
- * Folder for client game
+ * Client forlder
  */
 app.use('/',express.static('./core/client'));
 
 /**
- * Secure server
- * @type {Function|*|Server}
+ * Initialization server
+ * @type {*}
  */
-var server = http.createServer(app);
+var server = require('http').Server(app);
 
 /**
- * Listen the port that the game is launched.
+ * Initialization socket
+ * @type {*}
+ */
+var io = require('socket.io')(server);
+
+/**
+ * Listen port and public socket and express
  */
 server.listen(process.env.PORT || 80);
 
 /**
- * Socket Listen
+ * Income connection
  */
-io.listen(server);
+io.on('connection', function (socket) {
+
+	var params = {
+		io:io,
+		app:app,
+		socket:socket
+	};
+
+	require('./server/server.js')(params);
+});
