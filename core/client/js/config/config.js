@@ -25,7 +25,7 @@ Shutter.Config = (function(){
 	 * @type {string}
 	 * @private
 	 */
-	var _salt = '$#&/&)(/(&%$/%$&%$#$#""$/(&/)(/%&(/&$';
+	var _salt = 'fd5ae061a0b2dd7e05bb47a0ffb04dbf1a7fa243ba465c4df290cff49d0e9f31';
 
 	/**
 	 * List of Endpoints

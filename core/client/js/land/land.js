@@ -22,7 +22,7 @@ Shutter.Land = (function(){
 
 		Shutter.Socket.emit('player:register',data);
 		Shutter.Socket.on('player:register',onSignUp);
-		
+
 		return false;
 	}
 
@@ -40,8 +40,12 @@ Shutter.Land = (function(){
 	 */
 	function signIn(e){
 		var $this = $(this);
-		var data = $this.serialize();
-		$.post(_endpoints.login.url,data,onSignIn);
+		var data = $this.serializeJSON({parseAll: true});
+
+		Shutter.Socket.emit('player:login',data);
+		Shutter.Socket.on('player:login',onSignIn);
+
+		return false;
 	}
 
 	/**
@@ -58,8 +62,12 @@ Shutter.Land = (function(){
 	 */
 	function guest(e){
 		var $this = $(this);
-		var data = $this.serialize();
-		$.post(_endpoints.guest.url,data,onGuest);
+		var data = $this.serializeJSON({parseAll: true});
+
+		Shutter.Socket.emit('player:guest',data);
+		Shutter.Socket.on('player:guest',onGuest);
+
+		return false;
 	}
 
 	/**

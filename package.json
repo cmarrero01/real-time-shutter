@@ -24,6 +24,12 @@
   "dependencies":{
     "socket.io":"latest",
     "express":"latest",
-    "mongoose":"latest"
+    "mongoose":"latest",
+	"connect-mongo":"latest",
+	"cookie-parser":"latest",
+	"express-session":"latest",
+	"mongoose-validate":"latest",
+	"body-parser":"latest",
+	"method-override":"latest"
   }
 }
