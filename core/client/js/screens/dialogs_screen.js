@@ -37,6 +37,14 @@ Shutter.Screen.Dialogs = (function(){
 	}
 
 	/**
+	 * Hide Dialogs
+	 * @param dialogId
+	 */
+	function hide(dialogId){
+		$('#'+dialogId).modal('hide');
+	}
+
+	/**
 	 * Init listen events to each dialog form.
 	 */
 	function events(){
@@ -46,6 +54,7 @@ Shutter.Screen.Dialogs = (function(){
 	}
 
 	return {
-		init:init
+		init:init,
+		hide:hide
 	};
 })();

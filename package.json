@@ -30,6 +30,7 @@
 	"express-session":"latest",
 	"mongoose-validate":"latest",
 	"body-parser":"latest",
-	"method-override":"latest"
+	"method-override":"latest",
+	"bcrypt-nodejs":"latest"
   }
 }

@@ -14,12 +14,6 @@ Shutter.Screen.Land = (function(){
 	 */
 	var _landTpl = [];
 
-	/**
-	 * List of menues templates
-	 * @type {Array}
-	 * @private
-	 */
-	var _menues = [];
 
 	/**
 	 * Initialization of landing page
@@ -27,7 +21,7 @@ Shutter.Screen.Land = (function(){
 	function init(){
 		_templates = Shutter.Tpl.tpl();
 		_landTpl = _templates['land'];
-		_menues = _templates['menues'];
+		Shutter.Screen.Menues.init();
 		show();
 	}
 
@@ -35,17 +29,15 @@ Shutter.Screen.Land = (function(){
 	 * Show elements of landing
 	 */
 	function show(){
-
 		Shutter.Tpl.draw(null,_landTpl.BackGround);
 		Shutter.Tpl.draw(null,_landTpl.TitleLand);
 
 		if(!Shutter.isLogin()){
-			Shutter.Tpl.draw(null,_menues.MainMenuLogOut);
+			Shutter.Screen.Menues.show('MainMenuLogOut');
 		}else{
-			Shutter.Tpl.draw(null,_menues.MainMenuLogIn);
+			Shutter.Screen.Menues.show('MainMenuLogIn');
 		}
 	}
-
 
 	return {
 		init:init

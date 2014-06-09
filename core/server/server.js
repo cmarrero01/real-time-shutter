@@ -19,8 +19,8 @@ module.exports = function(params){
 	 * Libraries
 	 * @type {{}}
 	 */
-	params.libs = {
-
+	params.lib = {
+		bCrypt:require('bcrypt-nodejs')
 	};
 
 	/**

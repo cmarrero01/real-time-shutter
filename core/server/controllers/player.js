@@ -15,8 +15,46 @@ module.exports = function(params){
 		 * @param args
 		 * @param socket
 		 */
-		function register(args,socket){
-			socket.emit('player:register',args);
+		function register(args,socket,cb){
+
+			var alias = args.params.aliasRgInput;
+			var email = args.params.emailRgInput;
+			var password = args.params.passwordRgInput;
+
+			var result = {
+				code:300
+			};
+
+			if(!alias || !email || !password){
+				cb(result);
+				return false;
+			}
+
+			var cryptPass =  params.lib.bCrypt.hashSync(password);
+
+			var newPlayer = new params.models.player({
+				alias:alias,
+				email:email,
+				password:cryptPass
+			});
+
+			var newPlayerCb = function(err,doc){
+
+				if(err || !doc){
+					cb(result);
+					return false;
+				}
+
+				result.code = 200;
+				result.player = doc;
+
+				cb(result);
+				return true;
+			};
+
+			newPlayer.save(newPlayerCb);
+
+			return true;
 		}
 
 		/**
@@ -24,8 +62,42 @@ module.exports = function(params){
 		 * @param args
 		 * @param socket
 		 */
-		function login(args,socket){
-			socket.emit('player:login',args);
+		function login(args,socket,cb){
+
+			var email = args.params.emailLgInput;
+			var password = args.params.passwordLgInput;
+
+			var result = {
+				code:300
+			};
+
+			if(!email || !password){
+				cb(result);
+				return false;
+			}
+
+			var loginCb = function(err,doc){
+				if(err || !doc){
+					cb(result);
+					return false;
+				}
+
+				var equal = params.lib.bCrypt.compareSync(password,doc.password);
+				if(!equal){
+					cb(result);
+					return false;
+				}
+
+				result.code = 200;
+				result.player = doc;
+
+				cb(result);
+				return true;
+			};
+
+			params.models.player.findOne({email:email},loginCb);
+
+			return true;
 		}
 
 		/**
@@ -33,7 +105,7 @@ module.exports = function(params){
 		 * @param args
 		 * @param socket
 		 */
-		function guest(args,socket){
+		function guest(args,socket,cb){
 			socket.emit('player:guest',args);
 		}
 
