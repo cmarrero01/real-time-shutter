@@ -11,11 +11,13 @@ module.exports = function(params){
 	var Player = (function(){
 
 		/**
-		 * Register
+		 * Register on shutter game
 		 * @param args
 		 * @param socket
+		 * @param fn
+		 * @returns {boolean}
 		 */
-		function register(args,socket,cb){
+		function register(args,socket,fn){
 
 			var alias = args.params.aliasRgInput;
 			var email = args.params.emailRgInput;
@@ -26,11 +28,11 @@ module.exports = function(params){
 			};
 
 			if(!alias || !email || !password){
-				cb(result);
+				fn(result);
 				return false;
 			}
 
-			var cryptPass =  params.lib.bCrypt.hashSync(password);
+			var cryptPass =  params.bCrypt.hashSync(password);
 
 			var newPlayer = new params.models.player({
 				alias:alias,
@@ -41,16 +43,11 @@ module.exports = function(params){
 			var newPlayerCb = function(err,doc){
 
 				if(err || !doc){
-					cb(result);
+					fn(result);
 					return false;
 				}
-
-				result.code = 200;
-				result.player = doc;
-
 				socket.player = doc;
-
-				cb(result);
+				updateSession(socket,doc,fn);
 				return true;
 			};
 
@@ -60,11 +57,13 @@ module.exports = function(params){
 		}
 
 		/**
-		 * Login
+		 * Login access
 		 * @param args
 		 * @param socket
+		 * @param fn
+		 * @returns {boolean}
 		 */
-		function login(args,socket,cb){
+		function login(args,socket,fn){
 
 			var email = args.params.emailLgInput;
 			var password = args.params.passwordLgInput;
@@ -74,28 +73,24 @@ module.exports = function(params){
 			};
 
 			if(!email || !password){
-				cb(result);
+				fn(result);
 				return false;
 			}
 
 			var loginCb = function(err,doc){
 				if(err || !doc){
-					cb(result);
+					fn(result);
 					return false;
 				}
 
-				var equal = params.lib.bCrypt.compareSync(password,doc.password);
+				var equal = params.bCrypt.compareSync(password,doc.password);
 				if(!equal){
-					cb(result);
+					fn(result);
 					return false;
 				}
-
-				result.code = 200;
-				result.player = doc;
-
 				socket.player = doc;
 
-				cb(result);
+				updateSession(socket,doc,fn);
 				return true;
 			};
 
@@ -105,18 +100,108 @@ module.exports = function(params){
 		}
 
 		/**
-		 * Guest
+		 * Guest access
 		 * @param args
 		 * @param socket
+		 * @param cb
 		 */
 		function guest(args,socket,cb){
 			socket.emit('player:guest',args);
 		}
 
+		/**
+		 * Get Admin Session
+		 * @param args
+		 * @param socket
+		 * @param fn
+		 */
+		function getSession(args,socket,fn){
+
+			var result = {
+				code:300
+			};
+
+			if(params.lib.session.handshake(socket)){
+				fn(result);
+				return;
+			}
+
+			var cookie = params.cookie.parse(socket.handshake.headers.cookie);
+			var connectSid = cookie['connect.sid'];
+			var sessionId = params.parseSid(connectSid,fn);
+
+			var sesGetCb = function(err,session){
+
+				if(err || !session){
+					fn(result);
+					return;
+				}
+
+				if(!session.admin){
+					fn(result);
+					return;
+				}
+
+				result.code = 200;
+				result.admin = session.admin;
+
+				fn(result);
+			};
+
+			params.store.get(sessionId, sesGetCb);
+		}
+
+		/**
+		 * Update session of socket and express
+		 * @param socket
+		 * @param args
+		 * @param fn
+		 */
+		function updateSession(socket,args,fn){
+
+			var result = {
+				code:300
+			};
+
+			var _session = null;
+
+			if(params.lib.session.handshake(socket)){
+				fn(result);
+				return;
+			}
+
+			var cookie = params.cookie.parse(socket.handshake.headers.cookie);
+			var connectSid = cookie['connect.sid'];
+			var sessionId = params.parseSid(connectSid,fn);
+
+			var sesSetCb = function(err){
+				if(err || !_session){
+					fn(result);
+					return;
+				}
+				result.code = 200;
+				result.player = args;
+				fn(result);
+			};
+
+			var sesGetCb = function(err,session){
+				if(err || !session){
+					fn(result);
+					return;
+				}
+				_session = session;
+				_session.player = args;
+				params.store.set(sessionId,_session,sesSetCb);
+			};
+
+			params.store.get(sessionId, sesGetCb);
+		}
+
 		return {
 			register:register,
 			login:login,
-			guest:guest
+			guest:guest,
+			getSession:getSession
 		};
 	})();
 

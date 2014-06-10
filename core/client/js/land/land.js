@@ -19,6 +19,7 @@ Shutter.Land = (function(){
 	function signUp(e){
 		var $this = $(this);
 		var data = $this.serializeJSON({parseAll: true});
+
 		Shutter.Socket.emit('player:register',data, onSignIn);
 		_dialogId = 'RegisterModal';
 
@@ -43,6 +44,7 @@ Shutter.Land = (function(){
 	 * @param result
 	 */
 	function onSignIn(result){
+		console.log(result);
 		if(!result || result.code !== 200){
 			return false;
 		}

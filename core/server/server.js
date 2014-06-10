@@ -20,7 +20,7 @@ module.exports = function(params){
 	 * @type {{}}
 	 */
 	params.lib = {
-		bCrypt:require('bcrypt-nodejs')
+		session:require('./libs/session.js')(params)
 	};
 
 	/**

@@ -22,15 +22,19 @@
   },
   "homepage": "https://github.com/cmarrero01/real-time-shutter",
   "dependencies":{
-    "socket.io":"latest",
-    "express":"latest",
-    "mongoose":"latest",
-	"connect-mongo":"latest",
-	"cookie-parser":"latest",
-	"express-session":"latest",
-	"mongoose-validate":"latest",
-	"body-parser":"latest",
-	"method-override":"latest",
-	"bcrypt-nodejs":"latest"
+	  "express":"latest",
+	  "cookie":"latest",
+	  "cookie-parser":"latest",
+	  "express-session":"latest",
+	  "body-parser":"latest",
+	  "method-override":"latest",
+	  "socket.io":"latest",
+	  "mongoose":"latest",
+	  "mongoose-validate":"latest",
+	  "connect-mongo":"latest",
+	  "bcrypt-nodejs":"latest",
+	  "consolidate":"latest",
+	  "mailer":"latest",
+	  "request":"latest"
   }
 }
