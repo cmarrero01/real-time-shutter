@@ -12,6 +12,7 @@ Shutter.Screen.Menues = (function(){
 	function draw(){
 		Shutter.Tpl.draw(null,_menues.MainMenuLogOut);
 		Shutter.Tpl.draw(null,_menues.MainMenuLogIn);
+		events();
 	}
 
 	function show(menu){
@@ -24,6 +25,10 @@ Shutter.Screen.Menues = (function(){
 
 	function remove(menu){
 		_menues[menu].remove();
+	}
+
+	function events(){
+		$(document).delegate('#PlayCpuBtn','click');
 	}
 
 	return {

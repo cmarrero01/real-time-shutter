@@ -61,7 +61,7 @@
     <script>
         $(document).ready(function(){
             socket.on('connect',function(){
-                Shutter.Socket.emit('player:session',{},Shutter.init)
+                Shutter.Socket.emit('player:session',{},Shutter.init);
             });
         });
     </script>
