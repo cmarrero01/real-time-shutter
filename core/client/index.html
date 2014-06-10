@@ -60,10 +60,9 @@
 
     <script>
         $(document).ready(function(){
-            //Set flag if the user is logIn
-            Shutter.setLogIn(false);
-            //Initialize game
-            Shutter.init();
+            socket.on('connect',function(){
+                Shutter.Socket.emit('player:session',{},Shutter.init)
+            });
         });
     </script>
 </body>

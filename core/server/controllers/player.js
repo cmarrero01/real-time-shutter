@@ -103,9 +103,9 @@ module.exports = function(params){
 		 * Guest access
 		 * @param args
 		 * @param socket
-		 * @param cb
+		 * @param fn
 		 */
-		function guest(args,socket,cb){
+		function guest(args,socket,fn){
 			socket.emit('player:guest',args);
 		}
 
@@ -137,14 +137,14 @@ module.exports = function(params){
 					return;
 				}
 
-				if(!session.admin){
+				if(!session.player){
 					fn(result);
 					return;
 				}
 
 				result.code = 200;
-				result.admin = session.admin;
-
+				result.player = session.player;
+				console.log(result);
 				fn(result);
 			};
 

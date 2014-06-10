@@ -3,11 +3,16 @@
  */
 var Shutter = (function(){
 
-	var _logIn = false;
+	var _logged = false;
 	/**
 	 * Load and initialize the entire core client module.
 	 */
-	function init(){
+	function init(result){
+
+		if(result && result.code === 200){
+			_logged = true;
+		}
+
 		Shutter.Tpl.init(onTplLoad);
 	}
 
@@ -24,7 +29,7 @@ var Shutter = (function(){
 	 * @returns {boolean}
 	 */
 	function isLogIn(){
-		return _logIn;
+		return _logged;
 	}
 
 	/**
@@ -33,7 +38,7 @@ var Shutter = (function(){
 	 * @returns {*}
 	 */
 	function setLogIn(flag){
-		return _logIn = flag;
+		return _logged = flag;
 	}
 
 	return {
