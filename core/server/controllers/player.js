@@ -48,6 +48,8 @@ module.exports = function(params){
 				result.code = 200;
 				result.player = doc;
 
+				socket.player = doc;
+
 				cb(result);
 				return true;
 			};
@@ -90,6 +92,8 @@ module.exports = function(params){
 
 				result.code = 200;
 				result.player = doc;
+
+				socket.player = doc;
 
 				cb(result);
 				return true;
